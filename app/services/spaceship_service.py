@@ -55,7 +55,7 @@ def brute_force(contracts):
     all_combinations = []
     for i in range(len(contracts)+1):
         for subset in itertools.combinations(contracts, i):
-            all_combinations.append(subset)
+            all_combinations.append(list(subset))
     
     no_overlap = []
     # remove combinations with overlaps
@@ -78,7 +78,6 @@ def fcfs(contracts):
             end = contract["start"] + contract["duration"]
     return res, get_profit(res)        
 
-    
 @early_termination
 def greedy_selection(contracts):
     contracts = sorted(contracts, key=lambda x: x["price"], reverse=True)

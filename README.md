@@ -48,6 +48,9 @@ app
 |--services
 |--utils
 main.py
+tests
+|--services
+
 ```
 
 ### **main.py**
@@ -77,6 +80,14 @@ Here endpoints are registered to the application, configure CORS and add custom 
 
 # Dynamic Programming Solution
 The Dynamic Programming (DP) will be the solution I am presenting for this test. This solution guarantees a valid set of contracts that optimizes for profit, at the cost of some memory.
+
+<img src="images/iter1.png"></img>
+
+<img src="images/iter2.png"></img>
+
+<img src="images/iter3.png"></img>
+
+<img src="images/iter4.png"></img>
 
 The running time of this solution is *O(mn + n log n)*, where *n* is the number of contracts, and *m* is the latest time a contract will end.The set of contracts is sorted at the start of the algorithm, running at *O(n log n)* time The comparisons and calculation done in each iteration are simple and will run in constant time. 
 
