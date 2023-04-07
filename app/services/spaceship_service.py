@@ -24,12 +24,18 @@ def optimize(contracts):
     # Loop through the contracts and end times
     for i, contract in enumerate(contracts):
         for j in range(max_end_time + 1):
+            # Copy previous cell if past end of contract
+            if j >contract["start"] + contract["duration"]:
+                profits[i][j] = profits[i][j-1]
+                selected_contracts[i][j] = selected_contracts[i][j-1]
+                continue
+                
             # Compute the profit obtained by not selecting the contract
             no_profit = profits[i-1][j] if i > 0 else 0
 
             # Compute the profit obtained by selecting the contract
-            if j >= contract["start"] + contract["duration"]:
-                yes_profit = contract["price"] + profits[i-1][contract["start"]]
+            if j == contract["start"] + contract["duration"]:
+                yes_profit = contract["price"] + profits[i-1][contract["start"]]              
             else:
                 yes_profit = 0
 
@@ -51,19 +57,19 @@ def optimize(contracts):
 
 @early_termination
 def brute_force(contracts):
-    # get all combinations
+    # Get all combinations
     all_combinations = []
     for i in range(len(contracts)+1):
         for subset in itertools.combinations(contracts, i):
             all_combinations.append(list(subset))
     
     no_overlap = []
-    # remove combinations with overlaps
+    # Remove combinations with overlaps
     for combination in all_combinations:
         if not has_overlaps(combination):
             no_overlap.append(combination)
     
-    # return combination with maximum profit
+    # Return combination with maximum profit
     return find_most_profitable_combination(no_overlap)
 
 @early_termination
@@ -101,7 +107,6 @@ def greedy_selection(contracts):
 
 @early_termination
 def random_selection(contracts):
-    
     res = random.sample(contracts, k=random.randint(1,len(contracts)))
     if has_overlaps(res):
         raise NoValidResultException( "No valid result found via random selection. Please try again or select a different algorithm.")

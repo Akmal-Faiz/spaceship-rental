@@ -81,13 +81,23 @@ Here endpoints are registered to the application, configure CORS and add custom 
 # Dynamic Programming Solution
 The Dynamic Programming (DP) will be the solution I am presenting for this test. This solution guarantees a valid set of contracts that optimizes for profit, at the cost of some memory.
 
-<img src="images/iter1.png"></img>
+<img src="images/iter_1.png"></img>
 
-<img src="images/iter2.png"></img>
+When a contract is completed, we compare whether it is more profitable to include the contract by summing its value and the value at the the start of the contract. In this case 10+0=10. The rest of the row is filled with 10 before moving onto the next contract.
 
-<img src="images/iter3.png"></img>
+<img src="images/iter_2.png"></img>
 
-<img src="images/iter4.png"></img>
+Up to the end of the second contract (hour 10), we simply copy the above row. At hour 10, we compare the profit that could be made by accepting the contract with the previous row. Since 0+14 > 10, we accept the contract and whatever contract was already accepted at the start of this contract (in this case it's nothing). The rest of the row is filled with 14.
+
+<img src="images/iter_3.png"></img>
+
+At hour 14, we compare the possible profit to the previous row. Since 8+10>14, we accept Contract1 and Contract3.
+
+<img src="images/iter_4.png"></img>
+
+At hour 14, we compare the possible profit to the previous row. Since 7+10<18, we reject Contract4 and keep Contract1 and Contract3.
+
+### Runtime and Space Analysis
 
 The running time of this solution is *O(mn + n log n)*, where *n* is the number of contracts, and *m* is the latest time a contract will end.The set of contracts is sorted at the start of the algorithm, running at *O(n log n)* time The comparisons and calculation done in each iteration are simple and will run in constant time. 
 
