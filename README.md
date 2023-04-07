@@ -75,7 +75,7 @@ Here endpoints are registered to the application, configure CORS and add custom 
 - The given list of contracts is not sorted in any way
 - The order of the contracts in the solution does not matter
 - If two contracts are exactly the same, it does not matter which is chosen
-- The earlier possible start time is 0
+- The earliest possible start time is 0
 
 
 # Dynamic Programming Solution
