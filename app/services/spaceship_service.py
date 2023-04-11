@@ -52,11 +52,7 @@ def optimize(contracts):
             else:
                 profits[i][j] = yes_profit
                 if j >= contract["start"] + contract["duration"]:
-                    selected_contracts[i][j] = selected_contracts[i-1][contract["start"]].copy() + [contract]
-    for i in profits:
-        print(i)
-    import pdb; pdb.set_trace()                 
-   
+                    selected_contracts[i][j] = selected_contracts[i-1][contract["start"]].copy() + [contract]             
 
     # Return the selected contracts and the maximum profit
     return selected_contracts[-1][-1], profits[-1][-1]
