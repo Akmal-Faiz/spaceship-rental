@@ -1,0 +1,92 @@
+[
+    {
+        "name": "clever-jelly-18",
+        "start": 0,
+        "duration": 4,
+        "price": 7
+    },
+    {
+        "name": "outstanding-cowhand-56",
+        "start": 1,
+        "duration": 2,
+        "price": 9
+    },
+    {
+        "name": "thoughtless-trowel-76",
+        "start": 2,
+        "duration": 6,
+        "price": 7
+    },
+    {
+        "name": "miniature-woodpecker-31",
+        "start": 4,
+        "duration": 5,
+        "price": 6
+    },
+    {
+        "name": "tame-shoreline-88",
+        "start": 5,
+        "duration": 2,
+        "price": 27
+    },
+    {
+        "name": "confused-peacock-8",
+        "start": 5,
+        "duration": 4,
+        "price": 7
+    },
+    {
+        "name": "blue-economist-28",
+        "start": 6,
+        "duration": 2,
+        "price": 1
+    },
+    {
+        "name": "late-reptile-90",
+        "start": 7,
+        "duration": 6,
+        "price": 5
+    },
+    {
+        "name": "clumsy-sleeper-85",
+        "start": 9,
+        "duration": 5,
+        "price": 21
+    },
+    {
+        "name": "gigantic-tidewater-85",
+        "start": 10,
+        "duration": 2,
+        "price": 30
+    },
+    {
+        "name": "blue-eyed-sprout-61",
+        "start": 10,
+        "duration": 4,
+        "price": 14
+    },
+    {
+        "name": "cooing-sunshine-5",
+        "start": 11,
+        "duration": 2,
+        "price": 5
+    },
+    {
+        "name": "thankful-fortuneteller-95",
+        "start": 12,
+        "duration": 6,
+        "price": 4
+    },
+    {
+        "name": "swift-anorexic-5",
+        "start": 14,
+        "duration": 5,
+        "price": 22
+    },
+    {
+        "name": "tender-balance-61",
+        "start": 15,
+        "duration": 2,
+        "price": 13
+    }
+]

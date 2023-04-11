@@ -26,6 +26,8 @@ python run.py -h 0.0.0.0 -p 8080
 python3 run.py -h 0.0.0.0 -p 8080 
 ```
 
+FastAPI provides a swagger UI for ease of testing. It will be available at `https://localhost:8080/docs`
+
 ## Docker
 A dockerfile is also available should you want to run this application in a container.
 ```
@@ -121,3 +123,17 @@ Here we take the unique approach of sorting the contracts by value, and acceptin
 
 ## **Random Selection**
 A combination of contracts is randomly selected and presented. If the combination is invalid, we throw an error. This is obviously a bad approach as it does not even guarantee a valid combination.
+
+
+# Bug Report
+The ManyFlights.json was a test case that failed. Upon debugging, I found the following, where a contract was selected despite having a lower profit. We can see in the image above, that the 2nd to last contract was ignored over the last one.
+
+<img src="images/bug_2.png"></img>
+
+I determined that the below piece of code was responsible. It was originally intended to slightly speed up the algorithm by skipping any comparisons after a contract is completed, but I had failed to account for the situation where a contract may start later than a previous be end before it.
+
+<img src="images/bug_1.png"></img>
+
+I have replaced it with the following, ensuring to compare contracts at every hour, but still avoiding repeated calculation of profit (which admittedly is trivial).
+
+<img src="images/bug_3.png"></img>

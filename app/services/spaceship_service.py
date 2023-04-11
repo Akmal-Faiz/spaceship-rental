@@ -24,10 +24,14 @@ def optimize(contracts):
     # Loop through the contracts and end times
     for i, contract in enumerate(contracts):
         for j in range(max_end_time + 1):
-            # Copy previous cell if past end of contract
+            # If past end of contract, take max of previous and above cells
             if j >contract["start"] + contract["duration"]:
-                profits[i][j] = profits[i][j-1]
-                selected_contracts[i][j] = selected_contracts[i][j-1]
+                if profits[i][j-1] > profits[i-1][j]:
+                    profits[i][j] = profits[i][j-1]
+                    selected_contracts[i][j] = selected_contracts[i][j-1]
+                else:
+                    profits[i][j] = profits[i-1][j]
+                    selected_contracts[i][j] = selected_contracts[i-1][j]
                 continue
                 
             # Compute the profit obtained by not selecting the contract
@@ -49,7 +53,9 @@ def optimize(contracts):
                 profits[i][j] = yes_profit
                 if j >= contract["start"] + contract["duration"]:
                     selected_contracts[i][j] = selected_contracts[i-1][contract["start"]].copy() + [contract]
-                
+    for i in profits:
+        print(i)
+    import pdb; pdb.set_trace()                 
    
 
     # Return the selected contracts and the maximum profit
